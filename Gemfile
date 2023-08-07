@@ -72,4 +72,6 @@ group :test do
 
 gem 'faker'
 
+gem 'letter_opener'
+
 end
