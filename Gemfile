@@ -62,6 +62,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener'
 end
 
 group :test do
@@ -72,6 +73,6 @@ group :test do
 
 gem 'faker'
 
-gem 'letter_opener'
+gem 'dotenv-rails'
 
 end
