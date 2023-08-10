@@ -1,40 +1,44 @@
-<h1>StaticPages#index</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
-<ul>
+<div class="pagebody">
+  <h1>Welcome to Eventbrite</h1>
+  <p>Your one-stop-shop for all events in your city.</p>
+
+  <ul>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete} %>
+      </li>
+
+      <li>
+        Voici ton email : <%= current_user.email %>
+      </li>
+
+      <li>
+        <%= link_to "Secret page", static_pages_secret_path %>
+      </li>
+
+      <li>
+       <%= link_to "Edit email / password", edit_user_registration_path %>
+      </li>
+
+    <% else %>
+      <li>    
+        <%= link_to "Sign in", new_user_session_path %>
+      </li>
+
+      <li>
+        <%= link_to "Sign up", new_user_registration_path %>
+      </li>
+
+    <% end %>
+  </ul>
+
+  <p>Eventbrite is the number one app for finding events posted by users in your city.</p>
   <% if user_signed_in? %>
-    <li>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete} %>
-    </li>
-
-    <li>
-      Voici ton email : <%= current_user.email %>
-    </li>
-
-    <li>
-      <%= link_to "Secret page", static_pages_secret_path %>
-    </li>
-
-    <li>
-      <%= link_to "Edit email / password", edit_user_registration_path %>
-    </li>
-
-  <% else %>
-    <li>    
-      <%= link_to "Sign in", new_user_session_path %>
-    </li>
-
-    <li>
-      <%= link_to "Sign up", new_user_registration_path %>
-    </li>
-
+    <p>Welcome, <%= current_user.email %>.</p>
   <% end %>
-</ul>
+</div>
 
-<p>Content for all users</p>
-<% if user_signed_in? %>
-  <p>This content is visible to signed-in users only.</p>
-<% end %>
+
 
 
 
